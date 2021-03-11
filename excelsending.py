@@ -10,14 +10,28 @@ wb = load_workbook('C:\\Users\\alwin\\Desktop\\form.xlsx')
 # create the sheet object 
 sheet = wb.active 
 
+def openNewWindow(): 
+      
+    # Toplevel object which will  
+    # be treated as a new window 
+    newWindow = Toplevel(root) 
+  
+    # sets the title of the 
+    # Toplevel widget 
+    newWindow.title("New Window") 
+  
+    # sets the geometry of toplevel 
+    newWindow.geometry("200x200") 
+  
+    Label(newWindow,text ="This is a new window").pack()
 
 def excel(): 
 	
 	# resize the width of columns in 
 	# excel spreadsheet 
 	sheet.column_dimensions['A'].width = 30
-	sheet.column_dimensions['B'].width = 10
-	sheet.column_dimensions['C'].width = 10
+	sheet.column_dimensions['B'].width = 20
+	sheet.column_dimensions['C'].width = 20
 	sheet.column_dimensions['D'].width = 20
 	sheet.column_dimensions['E'].width = 20
 	sheet.column_dimensions['F'].width = 40
@@ -237,6 +251,10 @@ if __name__ == "__main__":
 	submit = Button(root, text="Submit", fg="Black", 
 							bg="pink", command=insert) 
 	submit.grid(row=8, column=1) 
+	btn = Button(root,  
+             text ="Click to open a new window",  
+             command = openNewWindow) 
+	btn.grid(row=0, column=1) 
 
 	# start the GUI 
 	root.mainloop() 
