@@ -136,7 +136,7 @@ if __name__ == "__main__":
 	root = Tk() 
 
 	# set the background colour of GUI window 
-	root.configure(background='light green') 
+	root.configure(background="peach puff") 
 
 	# set the title of GUI window 
 	root.title("registration form") 
@@ -147,28 +147,28 @@ if __name__ == "__main__":
 	excel() 
 
 	# create a Form label 
-	heading = Label(root, text="Form", bg="light green") 
+	heading = Label(root, text="Patient Details", bg="peach puff") 
 
 	# create a Name label 
-	name = Label(root, text="Name", bg="light green") 
+	name = Label(root, text="Name", bg="peach puff") 
 
 	# create a Course label 
-	course = Label(root, text="Course", bg="light green") 
+	course = Label(root, text="Blood Group", bg="peach puff") 
 
 	# create a Semester label 
-	sem = Label(root, text="Semester", bg="light green") 
+	sem = Label(root, text="Disease Contracted", bg="peach puff") 
 
 	# create a Form No. lable 
-	form_no = Label(root, text="Form No.", bg="light green") 
+	form_no = Label(root, text="Phone Number", bg="peach puff") 
 
 	# create a Contact No. label 
-	contact_no = Label(root, text="Contact No.", bg="light green") 
+	contact_no = Label(root, text="Room Number", bg="peach puff") 
 
 	# create a Email id label 
-	email_id = Label(root, text="Email id", bg="light green") 
+	email_id = Label(root, text="Guardian", bg="peach puff") 
 
 	# create a address label 
-	address = Label(root, text="Address", bg="light green") 
+	address = Label(root, text="Allergies(if any)", bg="peach puff") 
 
 	# grid method is used for placing 
 	# the widgets at respective positions 
@@ -235,7 +235,7 @@ if __name__ == "__main__":
 
 	# create a Submit Button and place into the root window 
 	submit = Button(root, text="Submit", fg="Black", 
-							bg="Red", command=insert) 
+							bg="pink", command=insert) 
 	submit.grid(row=8, column=1) 
 
 	# start the GUI 
