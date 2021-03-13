@@ -4,9 +4,6 @@ from tkinter import *
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-# globally declare wb and sheet variable 
-
 # opening the existing excel file 
 wb = load_workbook('C:\\Users\\alwin\\Desktop\\form.xlsx') 
 
@@ -14,7 +11,7 @@ wb = load_workbook('C:\\Users\\alwin\\Desktop\\form.xlsx')
 sheet = wb.active 
 
 def plotage():
-    a=b=c=d=e=f=g=h=i=j=0
+    a=b=c=d=e=f=g=h=k=j=0
     for i in range(2,20):
         if sheet.cell(row=i, column=2).value is None:
             break
@@ -35,15 +32,14 @@ def plotage():
         elif int(sheet.cell(row=i, column=2).value) <= 80:
             h+=1
         elif int(sheet.cell(row=i, column=2).value) <= 90:
-            i+=1
+            k+=1
         else:
             j+=1
     x = np.array(["0-10","11-20","21-30","31-40","41-50","51-60","61-70","71-80","81-90","90+"])
-    y = np.array([a,b,c,d,e,f,g,h,i,j])
+    y = np.array([a,b,c,d,e,f,g,h,k,j])
     plt.bar(x,y)
     plt.show()
-    #print(int(sheet.cell(row=2, column=2).value))
-
+    
 def plotbld():
     a=b=o=ab=aa=bb=oo=abab=0
     for i in range(2,20):
@@ -73,7 +69,7 @@ def plotdis():
     for i in range(2,20):
         if sheet.cell(row=i, column=4).value is None:
             break
-        elif sheet.cell(row=i, column=4).value not in dis:
+        else:
             dis.append(sheet.cell(row=i, column=4).value)
     dicti = {i:dis.count(i) for i in dis}
     xcoor = []
@@ -233,61 +229,43 @@ def openNewWindow():
     disbtn = Button(newWindow, text=" Disease ", fg="Black", bg="burlywood1",command=plotdis)
     disbtn.grid(row=6, column=1) 
 
-# Driver code 
 if __name__ == "__main__": 
     
-    # create a GUI window 
     root = Tk() 
 
-    # set the background colour of GUI window 
     root.configure(background="peach puff") 
 
-    # set the title of GUI window 
     root.title("registration form") 
 
-    # set the configuration of GUI window 
     root.geometry("500x300") 
 
     excel() 
 
-    # create a Form label 
     heading = Label(root, text="Patient Details", bg="peach puff") 
-
-    # create a Name label 
+    
     name = Label(root, text="Name", bg="peach puff")
 
-    # create a Course label 
-    course = Label(root, text="Age", bg="peach puff") 
+    age = Label(root, text="Age", bg="peach puff") 
 
-    # create a Semester label 
-    sem = Label(root, text="Blood Group", bg="peach puff") 
+    bld = Label(root, text="Blood Group", bg="peach puff") 
 
-    # create a Form No. lable 
-    form_no = Label(root, text="Disease Contracted", bg="peach puff") 
+    dis = Label(root, text="Disease Contracted", bg="peach puff") 
 
-    # create a Contact No. label 
-    contact_no = Label(root, text="Phone Number", bg="peach puff") 
+    phn = Label(root, text="Phone Number", bg="peach puff") 
 
-    # create a Email id label 
-    email_id = Label(root, text="Guardian", bg="peach puff") 
+    guard = Label(root, text="Guardian", bg="peach puff") 
 
-    # create a address label 
-    address = Label(root, text="Allergies(if any)", bg="peach puff") 
+    allergy = Label(root, text="Allergies(if any)", bg="peach puff") 
 
-    # grid method is used for placing 
-    # the widgets at respective positions 
-    # in table like structure . 
     heading.grid(row=0, column=1) 
     name.grid(row=1, column=0) 
-    course.grid(row=2, column=0) 
-    sem.grid(row=3, column=0) 
-    form_no.grid(row=4, column=0) 
-    contact_no.grid(row=5, column=0) 
-    email_id.grid(row=6, column=0) 
-    address.grid(row=7, column=0) 
+    age.grid(row=2, column=0) 
+    bld.grid(row=3, column=0) 
+    dis.grid(row=4, column=0) 
+    phn.grid(row=5, column=0) 
+    guard.grid(row=6, column=0) 
+    allergy.grid(row=7, column=0) 
 
-    # create a text entry box 
-    # for typing the information 
     name_field = Entry(root) 
     age_field = Entry(root) 
     bld_field = Entry(root) 
@@ -299,33 +277,18 @@ if __name__ == "__main__":
     # bind method of widget is used for 
     # the binding the function with the events 
 
-    # whenever the enter key is pressed 
-    # then call the focus1 function 
     name_field.bind("<Return>", focus1) 
 
-    # whenever the enter key is pressed 
-    # then call the focus2 function 
     age_field.bind("<Return>", focus2) 
 
-    # whenever the enter key is pressed 
-    # then call the focus3 function 
     bld_field.bind("<Return>", focus3) 
 
-    # whenever the enter key is pressed 
-    # then call the focus4 function 
     dis_field.bind("<Return>", focus4) 
 
-    # whenever the enter key is pressed 
-    # then call the focus5 function 
     phn_field.bind("<Return>", focus5) 
 
-    # whenever the enter key is pressed 
-    # then call the focus6 function 
     guard_field.bind("<Return>", focus6) 
-
-    # grid method is used for placing 
-    # the widgets at respective positions 
-    # in table like structure . 
+ 
     name_field.grid(row=1, column=1, ipadx="100") 
     age_field.grid(row=2, column=1, ipadx="100") 
     bld_field.grid(row=3, column=1, ipadx="100") 
@@ -334,11 +297,10 @@ if __name__ == "__main__":
     guard_field.grid(row=6, column=1, ipadx="100") 
     allergy_field.grid(row=7, column=1, ipadx="100") 
 
-    # call excel function 
     excel() 
     l = Label(root, text=" ", bg="peach puff") 
     l.grid(row=8,column=1) 
-    # create a Submit Button and place into the root window 
+
     submit = Button(root, text="  Submit  ", fg="Black", 
                             bg="pink", command=insert) 
     submit.grid(row=9, column=1)
@@ -351,7 +313,5 @@ if __name__ == "__main__":
     
     btn.grid(row=11, column=1) 
 
-    # start the GUI 
     root.mainloop() 
  
- #how to stop taking inputs 
